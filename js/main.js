@@ -13,8 +13,8 @@ let blockCurrentX = blockInitialX;
 blockRef.style.left = blockCurrentX + 'px';
 blockRef.style.top = blockCurrentY + 'px';
 
-const bodyRightBorder = bodyRef.clientWidth - cubeRef.clientWidth;
-const bodyBottomBorder = bodyRef.clientHeight - cubeRef.clientHeight;
+const bodyRightBorder = bodyRef.clientWidth - blockRef.clientWidth;
+const bodyBottomBorder = bodyRef.clientHeight - blockRef.clientHeight;
 
 const showMessage = () => {
   if(blockRef.style.top < bodyRef.clientHeight + 'px' || blockRef.style.top > bodyRef.clientTop + 'px' ||  blockRef.style.left < bodyRef.clientWidth + 'px' ||  blockRef.style.left > bodyRef.clientLeft + 'px') {
@@ -54,3 +54,51 @@ const blockJump = () => {
   }
   document.addEventListener('keyup', blockBeforeJumping);
 }
+
+document.addEventListener('keydown', (event) => {
+  switch(event.code) {
+    case 'ArrowUp':
+      blockCurrentY = blockCurrentY - 10;
+      blockRef.style.top = blockCurrentY + 'px';
+      break;
+    case 'ArrowDown':
+      blockCurrentY = blockCurrentY + 10;
+      blockRef.style.top = blockCurrentY + 'px';
+      break;
+    case 'ArrowLeft': 
+      blockCurrentX = blockCurrentX - 10;
+      blockRef.style.left = blockCurrentX + 'px';
+      break;
+    case 'ArrowRight':
+      blockCurrentX = blockCurrentX + 10;
+      blockRef.style.left = blockCurrentX + 'px';
+      break;
+    case 'ControlLeft':
+      blockSit();
+      break;
+    case 'Space':
+      blockJump();
+      break;
+  }
+
+  if(blockCurrentX <= 0) {
+    blockCurrentX = blockCurrentX + 20;
+    blockRef.style.left = blockCurrentX + 'px';
+    showMessage();
+  }
+  if(blockCurrentX > bodyRightBorder) {
+    blockCurrentX = blockCurrentX - 20;
+    blockRef.style.left = blockCurrentX+ 'px';
+    showMessage();
+  }
+  if(blockCurrentY <= 0) {
+    blockCurrentY = blockCurrentY + 20;
+    blockRef.style.top = blockCurrentY + 'px';
+    showMessage();
+  }
+  if(blockCurrentY > bodyBottomBorder) {
+    blockCurrentY = blockCurrentY - 20;
+    blockRef.style.top = blockCurrentY + 'px';
+    showMessage();
+  }
+});
