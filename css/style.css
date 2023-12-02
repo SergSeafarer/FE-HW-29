@@ -1,0 +1,20 @@
+.parent {
+  height: 100vh;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.block {
+  width: 100px;
+  height: 100px;
+  background-color: black;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: wheat;
+}
+
+.message {
+  visibility: hidden;
+}
