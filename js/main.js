@@ -39,6 +39,9 @@ const blockSit  = () => {
   blockRef.style.height = newHeight + 'px';
   blockRef.style.width = newWidth + 'px';
   blockRef.style.transition = 0.3 + 's';
+  if(Number.parseInt(blockRef.style.left) + Number.parseInt(blockRef.style.width) > bodyRightBorder) {
+    showMessage();
+  }
   document.addEventListener('keyup', blockOriginalSize);
 }
 
