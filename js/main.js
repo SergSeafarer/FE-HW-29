@@ -77,6 +77,7 @@ document.addEventListener('keydown', (event) => {
       blockRef.style.left = blockCurrentX + 'px';
       break;
     case 'ControlLeft':
+    case 'ControlRight':
       blockSit();
       break;
     case 'Space':
